@@ -12,14 +12,14 @@
   "types": "type-declarations",
   "scripts": {
     "build": "npm-run-all --print-label clean --parallel bundle transpile:commonjs transpile:es generateTypes",
-    "bundle": "NODE_ENV=production webpack --config webpack.config.js",
+    "bundle": "cross-env NODE_ENV=production webpack --config webpack.config.js",
     "clean": "rimraf es lib dist type-declarations",
     "format": "prettier --write src/**/*",
     "generateTypes": "tsc -p tsconfig.base.json --emitDeclarationOnly",
     "lint": "eslint src/**/*.{js,jsx,ts,tsx}",
-    "test": "BABEL_ENV=commonjs TS_NODE_FILES=true TS_NODE_PROJECT=tsconfig.commonjs.json mocha --opts mocha.opts --recursive src/**/*.test.*",
-    "transpile:commonjs": "TS_NODE_PROJECT=tsconfig.commonjs.json BABEL_ENV=commonjs babel src --out-dir lib --extensions .ts,.tsx,.js,.jsx --ignore src/**/*.test.ts",
-    "transpile:es": "TS_NODE_PROJECT=tsconfig.es.json babel src --out-dir es --extensions .ts,.tsx,.js,.jsx --ignore src/**/*.test.ts",
+    "test": "cross-env BABEL_ENV=commonjs TS_NODE_FILES=true TS_NODE_PROJECT=tsconfig.commonjs.json mocha --opts mocha.opts --recursive src/**/*.test.*",
+    "transpile:commonjs": "cross-env TS_NODE_PROJECT=tsconfig.commonjs.json BABEL_ENV=commonjs babel src --out-dir lib --extensions .ts,.tsx,.js,.jsx --ignore src/**/*.test.ts",
+    "transpile:es": "cross-env TS_NODE_PROJECT=tsconfig.es.json babel src --out-dir es --extensions .ts,.tsx,.js,.jsx --ignore src/**/*.test.ts",
     "typeCheck": "tsc --noEmit"
   },
   "files": [
@@ -46,6 +46,7 @@
     "@typescript-eslint/parser": "~2.8",
     "babel-loader": "~8.0",
     "chai": "~4.2",
+    "cross-env": "^7.0.2",
     "eslint": "~6.6",
     "eslint-config-prettier": "~6.7",
     "husky": "~3.1",
