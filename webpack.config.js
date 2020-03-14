@@ -4,7 +4,7 @@ module.exports = {
     entry: './src/index.ts',
     output: {
         filename: 'index.js',
-        library: 'TemplatePackageName',  // TODO CHANGEME
+        library: 'CDPInstance',  // TODO CHANGEME
         libraryTarget: 'umd',
         path: path.resolve(__dirname, 'dist'),
     },
@@ -12,7 +12,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(t|j)s$/,
+                test: /\.(t|j)s(x?)$/,
                 exclude: /node_modules/,
                 use: [
                     { loader: 'babel-loader' },
