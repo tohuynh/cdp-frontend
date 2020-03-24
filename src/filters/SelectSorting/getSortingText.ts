@@ -2,9 +2,9 @@ import { FilterState } from "../reducer";
 
 /**The list of sort by options and their corresponding labels. */
 export const sortBy = {
-  name: "Committee",
-  date: "Date",
-  value: "Relevance",
+  name: "Committee Name",
+  date: "Event Date",
+  value: "Search Relevance",
 } as const;
 
 /**The type of a sort by option. */

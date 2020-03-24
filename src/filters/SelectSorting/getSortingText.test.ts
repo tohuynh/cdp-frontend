@@ -14,12 +14,12 @@ describe("getSortingText", () => {
 
   test("Returns sort by date", () => {
     const textRep = getSortingText({ by: "date", order: "" }, defaultText);
-    expect(textRep).toEqual(`${defaultText} by Date`);
+    expect(textRep).toEqual(`${defaultText} by Event Date`);
   });
 
   test("Returns sort by value", () => {
     const textRep = getSortingText({ by: "value", order: "" }, defaultText);
-    expect(textRep).toEqual(`${defaultText} by Relevance`);
+    expect(textRep).toEqual(`${defaultText} by Search Relevance`);
   });
 
   test("Returns sort order", () => {
@@ -29,6 +29,6 @@ describe("getSortingText", () => {
 
   test("Returns sort by and order", () => {
     const textRep = getSortingText({ by: "name", order: "asc" }, defaultText);
-    expect(textRep).toEqual(`${defaultText} by Committee: Ascending`);
+    expect(textRep).toEqual(`${defaultText} by Committee Name: Ascending`);
   });
 });

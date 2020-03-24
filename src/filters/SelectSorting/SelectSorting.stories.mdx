@@ -1,6 +1,6 @@
 import { action } from "@storybook/addon-actions";
 import { Meta, Props, Story } from "@storybook/addon-docs/blocks";
-import { array, object, withKnobs } from "@storybook/addon-knobs";
+import { array, select, withKnobs } from "@storybook/addon-knobs";
 
 import SelectSorting from "./SelectSorting";
 
@@ -9,6 +9,7 @@ import SelectSorting from "./SelectSorting";
 # Select Sorting
 
 ### Display radio checkboxes to select sorting options
+
 The width of SelectSorting takes on the width of its container.
 
 <Props of={SelectSorting} />
@@ -47,10 +48,14 @@ Change the values of the sort state to change what sort options are selected.
 
 <Story name="Sort State Playground" parameters={{ decorators: [withKnobs] }}>
   <SelectSorting
-    state={object("Sort Options", {
-      by: "",
-      order: "",
-    })}
+    state={{
+      by: select("Sort By", {
+        "Committee Name": "name",
+        "Event Date": "date",
+        "Search Relevance": "value",
+      }),
+      order: select("Sort Order", { Ascending: "asc", Descending: "desc" }),
+    }}
     update={action("update-sorting-state")}
     sortByOptions={["name", "date", "value"]}
   />
